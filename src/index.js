@@ -58,10 +58,10 @@ function App() {
 }
 
 function Header() {
-  
-  return (<header className="header">
-    <h1>Fast React Pizza Co.</h1>
-  </header>
+  return (
+    <header className="header">
+      <h1>Fast React Pizza Co.</h1>
+    </header>
   );
 }
 
@@ -69,10 +69,29 @@ function Menu() {
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      <Pizza />
-      <Pizza />
-      <Pizza />
+      <Pizza
+        name="Pizza Spinaci"
+        ingredients="Tomato, mozarella, spinach, and ricotta cheese"
+        price="12"
+        photoName="pizzas/spinaci.jpg"
+      />
+      <Pizza
+        name="Pizza Funghi"
+        ingredients="Tomato, mozarella, mushrooms, and onion"
+        price="12"
+        photoName="pizzas/funghi.jpg"
+      />
     </main>
+  );
+}
+
+function Pizza(props) {
+  return (
+    <div>
+      <img src={props.photoName} alt={props.name} />
+      <h3>{props.name}</h3>
+      <p>{props.ingredients}</p>
+    </div>
   );
 }
 
@@ -83,19 +102,10 @@ function Footer() {
   const isOpen = hour >= openHour && hour <= closeHour;
   console.log(isOpen);
 
-  return (<footer className="footer">
-    {new Date().toLocaleTimeString()} {" "}
-    We're Open
-  </footer>);
-}
-
-function Pizza() {
   return (
-    <div>
-      <img src="pizzas/spinaci.jpg" alt="Pizza Spinach" />
-      <h3>Pizza Spinaci</h3>
-      <p>Tomato, mozarella, spinach, and ricotta cheese</p>
-    </div>
+    <footer className="footer">
+      {new Date().toLocaleTimeString()} We're Open
+    </footer>
   );
 }
 
